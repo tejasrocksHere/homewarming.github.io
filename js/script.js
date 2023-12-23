@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize Sakura falling effect
-    document.querySelector('.sakura-falling').sakura();
+    var sakuraElement = document.querySelector('.sakura-falling');
+    if (sakuraElement && typeof sakuraElement.sakura === 'function') {
+      sakuraElement.sakura();
+    }
   
     // Set the date we're counting down to
     var countDownDate = new Date("Jan 6, 2024 00:00:00").getTime();
@@ -35,15 +38,17 @@ document.addEventListener('DOMContentLoaded', function () {
   
     }, 1000);
   
-    // Trigger the play event for the audio element on page load
-    var audio = document.getElementById("my_audio");
-    if (audio) {
-      audio.play().catch(function (error) {
-        // Handle the error if autoplay is not allowed
-        console.error("Autoplay error:", error.message);
-      });
-      console.log('Song');
-    }
+    // Trigger the play event for the audio element on user interaction
+    document.addEventListener('click', function() {
+      var audio = document.getElementById("my_audio");
+      if (audio) {
+        audio.play().catch(function (error) {
+          // Handle the error if autoplay is not allowed
+          console.error("Autoplay error:", error.message);
+        });
+        console.log('Song');
+      }
+    });
   
     // Being a bit cool :p  
     var styles = [
