@@ -51,6 +51,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // });
   
     // Being a bit cool :p  
+
+
+    window.onload = function() {
+      console.log("Page loaded");
+      var x = document.getElementById("myaudio");
+      if (x) {
+        x.play();
+        console.log("Audio played");
+      } else {
+        console.error("Audio element not found");
+      }
+    };
+    
+
+    // console.log("object wdfewfkjwb");
     var styles = [
       'background: linear-gradient(#D33106, #571402)',
       'border: 4px solid #3E0E02',
@@ -82,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
       'font-size: 32px'
     ].join(';');
   
-    console.log('\n\n%c SAVE THE DATE: 6th Jan, 2024!', styles);
-    console.log('%cYour presence is requested!%c\n\nRegards: Tejas Mundhe', styles1, styles2);
+
   });
   
