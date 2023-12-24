@@ -52,40 +52,21 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Being a bit cool :p  
 
+    var audio = document.getElementById("myaudio");
 
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log("Page loaded");
-    
-      // Function to create an AudioContext and start playback
-      function playAudio() {
-        var context = new (window.AudioContext || window.webkitAudioContext)();
-        var source = context.createBufferSource();
-    
-        // Load the audio file
-        fetch('./song.mp3')
-          .then(response => response.arrayBuffer())
-          .then(data => context.decodeAudioData(data))
-          .then(buffer => {
-            source.buffer = buffer;
-            source.connect(context.destination);
-          })
-          .catch(error => console.error('Error loading audio:', error));
-    
-        // Start playback
-        source.start(0);
-        console.log('Audio played');
-      }
-    
-      // Create a button that, when clicked, plays the audio
-      var playButton = document.createElement('button');
-      playButton.innerText = 'Play Audio';
-      playButton.addEventListener('click', playAudio);
-    
-      // Append the button to the body
-      document.body.appendChild(playButton);
-    });
-    
-    
+    // Play the audio
+
+
+    if(audio)
+{
+    audio.play();
+
+console.log(
+"audio is playing"
+);
+  } 
+  else
+console.log("no audio");
 
     // console.log("object wdfewfkjwb");
     var styles = [
