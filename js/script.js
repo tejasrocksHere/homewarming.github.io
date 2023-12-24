@@ -55,12 +55,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.onload = function() {
       console.log("Page loaded");
-      var x = document.getElementById("myaudio");
-      if (x) {
-        x.play();
-        console.log("Audio played");
+    
+      // Check if the browser supports the Audio API
+      if ('AudioContext' in window || 'webkitAudioContext' in window) {
+        var context = new (window.AudioContext || window.webkitAudioContext)();
+        var source = context.createBufferSource();
+    
+        // Load the audio file
+        fetch('./song.mp3')
+          .then(response => response.arrayBuffer())
+          .then(data => context.decodeAudioData(data))
+          .then(buffer => {
+            source.buffer = buffer;
+            source.connect(context.destination);
+          });
+    
+        // Create a button that, when clicked, plays the audio
+        var playButton = document.createElement('button');
+        playButton.innerText = 'Play Audio';
+        playButton.addEventListener('click', function() {
+          source.start(0);
+          console.log('Audio played');
+        });
+    
+        // Append the button to the body
+        document.body.appendChild(playButton);
       } else {
-        console.error("Audio element not found");
+        console.error("Audio API not supported");
       }
     };
     
