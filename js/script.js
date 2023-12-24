@@ -52,8 +52,22 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Being a bit cool :p  
 
-    var audio = new Audio('./song.mp3');
-    var playPromise = audio.play();
+    document.addEventListener('mousedown', function() {
+      var audio = new Audio('./song.mp3');
+      
+      // Use the promise to catch errors or handle other events
+      var playPromise = audio.play();
+      if (playPromise !== undefined) {
+          playPromise.then(_ => {
+              // Playback started successfully
+          }).catch(error => {
+              // Playback failed
+              console.error('Playback failed: ', error);
+          });
+      }
+  });
+  
+  
 
     // console.log("object wdfewfkjwb");
     var styles = [
