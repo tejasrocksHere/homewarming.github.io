@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Being a bit cool :p  
 
 
-    window.onload = function() {
+    document.addEventListener('DOMContentLoaded', function () {
       console.log("Page loaded");
     
-      // Check if the browser supports the Audio API
-      if ('AudioContext' in window || 'webkitAudioContext' in window) {
+      // Function to create an AudioContext and start playback
+      function playAudio() {
         var context = new (window.AudioContext || window.webkitAudioContext)();
         var source = context.createBufferSource();
     
@@ -68,22 +68,23 @@ document.addEventListener('DOMContentLoaded', function () {
           .then(buffer => {
             source.buffer = buffer;
             source.connect(context.destination);
-          });
+          })
+          .catch(error => console.error('Error loading audio:', error));
     
-        // Create a button that, when clicked, plays the audio
-        var playButton = document.createElement('button');
-        playButton.innerText = 'Play Audio';
-        playButton.addEventListener('click', function() {
-          source.start(0);
-          console.log('Audio played');
-        });
-    
-        // Append the button to the body
-        document.body.appendChild(playButton);
-      } else {
-        console.error("Audio API not supported");
+        // Start playback
+        source.start(0);
+        console.log('Audio played');
       }
-    };
+    
+      // Create a button that, when clicked, plays the audio
+      var playButton = document.createElement('button');
+      playButton.innerText = 'Play Audio';
+      playButton.addEventListener('click', playAudio);
+    
+      // Append the button to the body
+      document.body.appendChild(playButton);
+    });
+    
     
 
     // console.log("object wdfewfkjwb");
