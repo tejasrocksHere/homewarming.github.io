@@ -39,16 +39,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 1000);
   
     // Trigger the play event for the audio element on user interaction
-    document.addEventListener('click', function() {
-      var audio = document.getElementById("my_audio");
-      if (audio) {
-        audio.play().catch(function (error) {
-          // Handle the error if autoplay is not allowed
-          console.error("Autoplay error:", error.message);
-        });
-        console.log('Song');
-      }
-    });
+    // document.addEventListener('click', function() {
+    //   var audio = document.getElementById("my_audio");
+    //   if (audio) {
+    //     audio.play().catch(function (error) {
+    //       // Handle the error if autoplay is not allowed
+    //       console.error("Autoplay error:", error.message);
+    //     });
+    //     console.log('Song');
+    //   }
+    // });
   
     // Being a bit cool :p  
     var styles = [

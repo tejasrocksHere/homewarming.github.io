@@ -676,3 +676,50 @@ body {
 	text-align: center;
 	margin-bottom: 24px;
 }
+@-webkit-keyframes kelebeks-fall {
+	0% {
+	  top: 110%; /* Changed from -10% to 110% */
+	}
+	100% {
+	  top: -10%;
+	}
+  }
+  
+  @-webkit-keyframes kelebeks-shake {
+	0% {
+	  -webkit-transform: translateX(0px);
+	  transform: translateX(0px);
+	}
+	50% {
+	  -webkit-transform: translateX(80px);
+	  transform: translateX(80px);
+	}
+	100% {
+	  -webkit-transform: translateX(0px);
+	  transform: translateX(0px);
+	}
+  }
+  
+  @keyframes kelebeks-fall {
+	0% {
+	  top: 110%; /* Changed from -10% to 110% */
+	}
+	100% {
+	  top: -10%;
+	}
+  }
+  
+  @keyframes kelebeks-shake {
+	0% {
+	  transform: translateX(0px);
+	}
+	50% {
+	  transform: translateX(80px);
+	}
+	100% {
+	  transform: translateX(0px);
+	}
+  }
+  
+  /* Your existing .kelebek styles... */
+  
