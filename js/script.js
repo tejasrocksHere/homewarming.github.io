@@ -52,14 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Being a bit cool :p  
 
-    const sound = new Audio() 
-
-      
-    function playSound() { 
-      sound.src = '/song.mp3' 
-      sound.play() 
-    } 
-    playSound();
+    var audio = new Audio('./song.mp3');
+    var playPromise = audio.play();
 
     // console.log("object wdfewfkjwb");
     var styles = [
