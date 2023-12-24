@@ -52,21 +52,32 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Being a bit cool :p  
 
-    var audio = document.getElementById("myaudio");
+    function playAudio() {
+      var audio = document.getElementById("myaudio");
 
-    // Play the audio
+      // Check if the document is visible to the user
+      if (document.visibilityState === 'visible') {
+          // Attempt to play the audio
+          audio.play()
+              .then(() => {
+                  console.log('Audio playback started successfully');
+              })
+              .catch((error) => {
+                  console.error('Error starting audio playback:', error.message);
+                  // Handle the error as needed
+              });
+      } else {
+          // Document is not visible, you may want to wait for visibility or trigger playback on user interaction
+          document.addEventListener('visibilitychange', function() {
+              if (document.visibilityState === 'visible') {
+                  playAudio();
+              }
+          });
+      }
+  }
 
-
-    if(audio)
-{
-    audio.play();
-
-console.log(
-"audio is playing"
-);
-  } 
-  else
-console.log("no audio");
+  // Call the playAudio function when needed
+  playAudio();
 
     // console.log("object wdfewfkjwb");
     var styles = [
