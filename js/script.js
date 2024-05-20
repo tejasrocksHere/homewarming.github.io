@@ -5,24 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
       sakuraElement.sakura();
     }
   
-    // Set the date we're counting down to
-    var countDownDate = new Date("Jan 6, 2024 00:00:00").getTime();
+    // Set the date the event was completed
+    var eventDate = new Date("Jan 6, 2024 00:00:00").getTime();
   
-    // Update the count down every 1 second
+    // Update the elapsed time every 1 second
     var x = setInterval(function () {
-      // Get todays date and time
+      // Get today's date and time
       var now = new Date().getTime();
   
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
-  
-      // If the countdown until 6th Jan 2024 is over, start a new countdown for eternity
-      if (distance <= 0) {
-        // Set a new date far into the future (e.g., 100 years from now)
-        countDownDate = new Date();
-        countDownDate.setFullYear(countDownDate.getFullYear() + 100);
-        distance = countDownDate - now;
-      }
+      // Find the distance between now and the event date
+      var distance = now - eventDate;
   
       // Time calculations for days, hours, minutes, and seconds
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -39,19 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 1000);
   
     // Trigger the play event for the audio element on user interaction
-    // document.addEventListener('click', function() {
-    //   var audio = document.getElementById("my_audio");
-    //   if (audio) {
-    //     audio.play().catch(function (error) {
-    //       // Handle the error if autoplay is not allowed
-    //       console.error("Autoplay error:", error.message);
-    //     });
-    //     console.log('Song');
-    //   }
-    // });
-  
-    // Being a bit cool :p  
-
     document.addEventListener('mousedown', function() {
       var audio = new Audio('./song.mp3');
       
@@ -65,11 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
               console.error('Playback failed: ', error);
           });
       }
-  });
-  
-  
+    });
 
-    // console.log("object wdfewfkjwb");
+    // Styling for console messages (if needed)
     var styles = [
       'background: linear-gradient(#D33106, #571402)',
       'border: 4px solid #3E0E02',
@@ -100,7 +77,4 @@ document.addEventListener('DOMContentLoaded', function () {
       'font-weight: bold',
       'font-size: 32px'
     ].join(';');
-  
-
-  });
-  
+});
